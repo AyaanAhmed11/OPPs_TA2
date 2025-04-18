@@ -1,0 +1,24 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class Solution {
+    public int countPrimeSetBits(int left, int right) {
+        Set<Integer> primes = Set.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31);
+        int count = 0;
+
+        for (int i = left; i <= right; i++) {
+            int bits = Integer.bitCount(i);
+            if (primes.contains(bits)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.countPrimeSetBits(6, 10));  // 4
+        System.out.println(sol.countPrimeSetBits(10, 15)); // 5
+    }
+}
