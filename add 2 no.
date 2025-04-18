@@ -1,0 +1,18 @@
+public class Solution {
+    public int getSum(int a, int b) {
+        while (b != 0) {
+            int carry = (a & b) << 1;
+            a = a ^ b;
+            b = carry;
+        }
+        return a;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.getSum(1, 2)); // 3
+        System.out.println(sol.getSum(2, 3)); // 5
+        System.out.println(sol.getSum(-4, 6)); // 2
+        System.out.println(sol.getSum(-3, -2)); // -5
+    }
+}
