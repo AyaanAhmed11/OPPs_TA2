@@ -1,0 +1,23 @@
+public class Solution {
+    public String toHex(int num) {
+        if (num == 0) return "0";
+
+        char[] hexChars = "0123456789abcdef".toCharArray();
+        StringBuilder sb = new StringBuilder();
+
+        while (num != 0 && sb.length() < 8) {
+            sb.append(hexChars[num & 0xf]);
+            num >>>= 4;
+        }
+
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.toHex(26));     // "1a"
+        System.out.println(sol.toHex(-1));     // "ffffffff"
+        System.out.println(sol.toHex(0));      // "0"
+        System.out.println(sol.toHex(305419896)); // "12345678"
+    }
+}
